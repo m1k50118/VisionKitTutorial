@@ -1,0 +1,110 @@
+attributes:
+  BuildIndependentTargetsInParallel: '1'
+  LastSwiftUpdateCheck: '1400'
+  LastUpgradeCheck: '1400'
+configs:
+  Debug: debug
+  Release: release
+name: VisionKitTutorial
+options:
+  defaultConfig: Release
+  groupSortPosition: bottom
+  transitivelyLinkDependencies: false
+settings:
+  configs:
+    Debug:
+      CLANG_CXX_LANGUAGE_STANDARD: gnu++17
+      IPHONEOS_DEPLOYMENT_TARGET: '16.0'
+      MTL_ENABLE_DEBUG_INFO: INCLUDE_SOURCE
+      MTL_FAST_MATH: 'YES'
+      SDKROOT: iphoneos
+      SWIFT_ACTIVE_COMPILATION_CONDITIONS: DEBUG
+      SWIFT_OPTIMIZATION_LEVEL: -Onone
+    Release:
+      CLANG_CXX_LANGUAGE_STANDARD: gnu++17
+      IPHONEOS_DEPLOYMENT_TARGET: '16.0'
+      MTL_FAST_MATH: 'YES'
+      SDKROOT: iphoneos
+      SWIFT_COMPILATION_MODE: wholemodule
+      SWIFT_OPTIMIZATION_LEVEL: -O
+targets:
+  VisionKitTutorial:
+    # info:
+      # path: VisionKitTutorial/Info.plist
+      # properties: 
+      #   UILaunchStoryboardName: 
+    preBuildScripts:
+      - script: |
+                # Type a script or drag a script file from your workspace to insert its path.
+                if mint list >swiftformat; then
+                  mint run swiftformat --swiftversion 5.6 .
+                else
+                  echo "warning: SwiftFormat not installed, download from https://github.com/nicklockwood/SwiftFormat"
+                fi
+        name: SwiftFormat
+        basedOnDependencyAnalysis: false
+      - script: |
+                # Type a script or drag a script file from your workspace to insert its path.
+                export PATH="$PATH:/opt/homebrew/bin"
+                if which swiftlint > /dev/null; then
+                  swiftlint --fix && swiftlint
+                else
+                  echo "warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint"
+                fi
+        name: Swiftlint
+        basedOnDependencyAnalysis: false
+    platform: iOS
+    settings:
+      configs:
+        Debug:
+          ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+          CODE_SIGN_STYLE: Automatic
+          CURRENT_PROJECT_VERSION: '1'
+          DEVELOPMENT_TEAM: WV6D96BG4D
+          GENERATE_INFOPLIST_FILE: 'YES'
+          INFOPLIST_FILE: VisionKitTutorial/Info.plist
+          INFOPLIST_KEY_NSCameraUsageDescription: Your camera is used to scan text
+            and codes.
+          INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents: 'YES'
+          INFOPLIST_KEY_UILaunchStoryboardName: LaunchScreen
+          INFOPLIST_KEY_UIMainStoryboardFile: 
+          INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad: UIInterfaceOrientationPortrait
+            UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft
+            UIInterfaceOrientationLandscapeRight
+          INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone: UIInterfaceOrientationPortrait
+            UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight
+          MARKETING_VERSION: '1.0'
+          PRODUCT_BUNDLE_IDENTIFIER: makoto.sato.VisionKitTutorial
+          SWIFT_EMIT_LOC_STRINGS: 'YES'
+          SWIFT_VERSION: '5.0'
+        Release:
+          ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+          CODE_SIGN_STYLE: Automatic
+          CURRENT_PROJECT_VERSION: '1'
+          DEVELOPMENT_TEAM: WV6D96BG4D
+          GENERATE_INFOPLIST_FILE: 'YES'
+          INFOPLIST_FILE: VisionKitTutorial/Info.plist
+          INFOPLIST_KEY_NSCameraUsageDescription: Your camera is used to scan text
+            and codes.
+          INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents: 'YES'
+          INFOPLIST_KEY_UILaunchStoryboardName: LaunchScreen
+          INFOPLIST_KEY_UIMainStoryboardFile: 
+          INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad: UIInterfaceOrientationPortrait
+            UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft
+            UIInterfaceOrientationLandscapeRight
+          INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone: UIInterfaceOrientationPortrait
+            UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight
+          MARKETING_VERSION: '1.0'
+          PRODUCT_BUNDLE_IDENTIFIER: makoto.sato.VisionKitTutorial
+          SWIFT_EMIT_LOC_STRINGS: 'YES'
+          SWIFT_VERSION: '5.0'
+    type: application
+    sources:
+      - VisionKitTutorial
+packages:
+  SnapKit:
+    url: https://github.com/SnapKit/SnapKit
+    from: 5.6.0
+  
+
+
