@@ -29,10 +29,8 @@ settings:
       SWIFT_OPTIMIZATION_LEVEL: -O
 targets:
   VisionKitTutorial:
-    # info:
-      # path: VisionKitTutorial/Info.plist
-      # properties: 
-      #   UILaunchStoryboardName: 
+    dependencies:
+      - package: SnapKit
     preBuildScripts:
       - script: |
                 # Type a script or drag a script file from your workspace to insert its path.
