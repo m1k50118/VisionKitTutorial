@@ -34,12 +34,13 @@ targets:
     preBuildScripts:
       - script: |
                 # Type a script or drag a script file from your workspace to insert its path.
-                if mint list >swiftformat; then
-                  mint run swiftformat --swiftversion 5.6 .
+                export PATH="$PATH:/opt/homebrew/bin"
+                if which swift-format >/dev/null; then
+                  swift-format -r . -i
                 else
-                  echo "warning: SwiftFormat not installed, download from https://github.com/nicklockwood/SwiftFormat"
+                  echo "warning: swift-format not installed, download from https://github.com/apple/swift-format"
                 fi
-        name: SwiftFormat
+        name: swift-format
         basedOnDependencyAnalysis: false
       - script: |
                 # Type a script or drag a script file from your workspace to insert its path.
