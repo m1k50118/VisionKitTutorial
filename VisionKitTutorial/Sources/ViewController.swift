@@ -43,7 +43,24 @@ class ViewController: UIViewController {
     }
 
     private func presentNextViewController() {
-        print("next")
+        let dataScannerViewController = DataScannerViewController()
+        let navigationController = UINavigationController(rootViewController: dataScannerViewController)
+        dataScannerViewController.delegate = self
+        isDeviceCapacity ? try? dataScannerViewController.startScanning() : dataScannerViewController.stopScanning()
+        self.navigationController?.present(navigationController, animated: true)
+    }
+}
+
+extension ViewController: DataScannerViewControllerDelegate {
+    func dataScanner(_ dataScanner: DataScannerViewController, didTapOn item: RecognizedItem) {
+        switch item {
+        case .text(let text):
+            print(text.transcript)
+        case .barcode(let barcode):
+            print(barcode.payloadStringValue ?? "Unknown")
+        @unknown default:
+            break
+        }
     }
 }
 
